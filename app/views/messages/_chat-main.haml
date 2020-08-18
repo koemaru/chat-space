@@ -1,0 +1,35 @@
+.chat-main
+  .main-header
+    .main-header__box
+      %p.main-header__box__groupname
+        techcamp
+      = link_to "#", class: "main-header__box__edit" do
+        = "Edit"
+    %p.main-header__member
+      Member : masa
+  .main-messages
+    .messages
+      .messages__box
+        %p.messages__box__username
+          masa
+        %p.messages__box__date
+          2020/8/16 21:35
+      %p.messages__comment
+        こんばんは
+    .messages
+      .messages__box
+        %p.messages__box__username
+          masa
+        %p.messages__box__date
+          2020/8/16 21:40
+      %p.messages__comment
+        こんばんは、お久しぶりです
+  .main-footer
+    %form.new-message
+      .input-box
+        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+        %label{class: "input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "input-box__image__filter"}
+      %input{type: "submit", class: "submit-btn", value: "SEND"}
+    
