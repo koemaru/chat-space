@@ -12,15 +12,9 @@
             = icon('fas', 'cog', class: 'side-header__box__icon--cog')
   .side-groups
     .side-groups__box
-      %p.side-groups__box__groupname
-        techcamp
-      %p.side-groups__box__message
-        まだメッセージがありません
-      %p.side-groups__box__groupname
-        program-team
-      %p.side-groups__box__message
-        no messages
-      %p.side-groups__box__groupname
-        development-task
-      %p.side-groups__box__message
-        on going
+      - current_user.groups.each do |group|
+        = link_to '#' do
+          %p.side-groups__box__groupname
+            = group.name
+          %p.side-groups__box__message
+            no messages
