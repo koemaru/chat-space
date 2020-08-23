@@ -5,22 +5,16 @@
         = current_user.name
       %ul.side-header__box__icon-list
         %li
-          = link_to "#", class: "side-header__box__icon" do
+          = link_to new_group_path, class: "side-header__box__icon" do
             = icon('fas', 'edit')
         %li
           = link_to edit_user_path(current_user), class: "side-header__box__icon" do
             = icon('fas', 'cog', class: 'side-header__box__icon--cog')
   .side-groups
     .side-groups__box
-      %p.side-groups__box__groupname
-        techcamp
-      %p.side-groups__box__message
-        まだメッセージがありません
-      %p.side-groups__box__groupname
-        program-team
-      %p.side-groups__box__message
-        no messages
-      %p.side-groups__box__groupname
-        development-task
-      %p.side-groups__box__message
-        on going
+      - current_user.groups.each do |group|
+        = link_to '#' do
+          %p.side-groups__box__groupname
+            = group.name
+          %p.side-groups__box__message
+            no messages
