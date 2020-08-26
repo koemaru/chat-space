@@ -8,22 +8,8 @@
     %p.main-header__member
       Member : masa
   .main-messages
-    .messages
-      .messages__box
-        %p.messages__box__username
-          masa
-        %p.messages__box__date
-          2020/8/16 21:35
-      %p.messages__comment
-        こんばんは
-    .messages
-      .messages__box
-        %p.messages__box__username
-          masa
-        %p.messages__box__date
-          2020/8/16 21:40
-      %p.messages__comment
-        こんばんは、お久しぶりです
+    = render @messages
+
   .main-footer
     = form_with model: [@group, @message], html: {class: "new-message"}, local: true do |f|
       .input-box
