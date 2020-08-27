@@ -2,11 +2,13 @@
   .main-header
     .main-header__box
       %p.main-header__box__groupname
-        techcamp
-      = link_to "#", class: "main-header__box__edit" do
+        = @group.name
+      = link_to edit_group_path(@group), class: "main-header__box__edit" do
         = "Edit"
     %p.main-header__member
-      Member : masa
+      = "Members :"
+      - @group.users.each do |user|
+        = user.name
   .main-messages
     = render @messages
 
