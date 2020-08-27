@@ -13,8 +13,8 @@
   .side-groups
     .side-groups__box
       - current_user.groups.each do |group|
-        = link_to '#' do
+        = link_to group_messages_path(group) do
           %p.side-groups__box__groupname
             = group.name
           %p.side-groups__box__message
-            no messages
+            = group.show_last_message

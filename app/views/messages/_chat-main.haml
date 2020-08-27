@@ -2,34 +2,21 @@
   .main-header
     .main-header__box
       %p.main-header__box__groupname
-        techcamp
-      = link_to "#", class: "main-header__box__edit" do
+        = @group.name
+      = link_to edit_group_path(@group), class: "main-header__box__edit" do
         = "Edit"
     %p.main-header__member
-      Member : masa
+      = "Members :"
+      - @group.users.each do |user|
+        = user.name
   .main-messages
-    .messages
-      .messages__box
-        %p.messages__box__username
-          masa
-        %p.messages__box__date
-          2020/8/16 21:35
-      %p.messages__comment
-        こんばんは
-    .messages
-      .messages__box
-        %p.messages__box__username
-          masa
-        %p.messages__box__date
-          2020/8/16 21:40
-      %p.messages__comment
-        こんばんは、お久しぶりです
+    = render @messages
+
   .main-footer
-    %form.new-message
+    = form_with model: [@group, @message], html: {class: "new-message"}, local: true do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-        %label{class: "input-box__image"}
+        = f.text_field :content, class: "input-box__text", placeholder: "type a message"
+        = f.label :image, class: "input-box__image" do
           = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image__filter"}
-      %input{type: "submit", class: "submit-btn", value: "SEND"}
-    
+          = f.file_field :image, class: "input-box__image__filter"
+      = f.submit 'Send', class: "submit-btn"
