@@ -1,3 +1,15 @@
 $(function() {
-  console.log("jQueryを導入した")
+  $('.new-message').on('submit', function(e){
+    e.preventDefault();
+    let formData = new FormData(this);
+    let url = $(this).attr('action');
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      data Type: 'json'
+      processData: false,
+      contentType: false
+    })
+  });
 });
