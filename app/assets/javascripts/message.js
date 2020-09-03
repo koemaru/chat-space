@@ -7,7 +7,7 @@ $(function() {
       url: url,
       type: "POST",
       data: formData,
-      data Type: 'json'
+      dataType: 'json',
       processData: false,
       contentType: false
     })
